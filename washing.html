@@ -1,0 +1,1647 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Washing Machines Collection</title>
+    <link rel="icon" type="image/png" href="Assets/Images/logo/title logo.png">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --secondary-gradient: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            --success-gradient: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            --electric-blue: #007BFF;
+            --deep-blue: #0056b3;
+            --neon-blue: #00d4ff;
+            --pure-white: #ffffff;
+            --dark-navy: #1a1d29;
+            --soft-gray: #f8f9fa;
+            --text-primary: #2d3748;
+            --text-secondary: #718096;
+            --shadow-soft: 0 10px 25px rgba(0, 0, 0, 0.08);
+            --shadow-medium: 0 15px 35px rgba(0, 0, 0, 0.12);
+            --shadow-strong: 0 20px 40px rgba(0, 0, 0, 0.15);
+            --transition-smooth: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            --transition-bounce: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            --accent-coral: #ff6b6b;
+            --accent-mint: #4ecdc4;
+            --accent-gold: #ffd700;
+            --glass-bg: rgba(255, 255, 255, 0.1);
+            --glass-border: rgba(255, 255, 255, 0.2);
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            line-height: 1.7;
+            color: var(--text-primary);
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+        .loader-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--primary-gradient);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.8s ease;
+        }
+        .loader {
+            width: 100px;
+            height: 100px;
+            position: relative;
+        }
+        .loader::before,
+        .loader::after {
+            content: '';
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            border: 4px solid transparent;
+            border-top-color: var(--pure-white);
+            animation: spin 1.5s cubic-bezier(0.68, -0.55, 0.265, 1.55) infinite;
+        }
+        .loader::after {
+            width: 80px;
+            height: 80px;
+            top: 10px;
+            left: 10px;
+            border-top-color: var(--neon-blue);
+            animation-direction: reverse;
+            animation-duration: 1s;
+        }
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+        .header {
+            background: rgba(26, 29, 41, 0.95);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--glass-border);
+            color: var(--pure-white);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            animation: slideInDown 0.8s ease;
+            box-shadow: var(--shadow-medium);
+        }
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            font-family: 'Poppins', sans-serif;
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--pure-white);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            transition: var(--transition-bounce);
+        }
+        .logo:hover {
+            transform: scale(1.05) rotate(2deg);
+        }
+        .logo i {
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-size: 2.2rem;
+            filter: drop-shadow(0 0 10px rgba(102, 126, 234, 0.5));
+        }
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2.5rem;
+            align-items: center;
+        }
+        .nav-menu a {
+            color: var(--pure-white);
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            position: relative;
+            transition: var(--transition-smooth);
+            overflow: hidden;
+        }
+        .nav-menu a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: var(--primary-gradient);
+            transition: var(--transition-smooth);
+            z-index: -1;
+        }
+        .nav-menu a:hover::before {
+            left: 0;
+        }
+        .nav-menu a:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-medium);
+        }
+        .nav-item {
+            position: relative;
+        }
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: rgba(26, 29, 41, 0.95);
+            backdrop-filter: blur(20px);
+            min-width: 220px;
+            border-radius: 15px;
+            box-shadow: var(--shadow-strong);
+            border: 1px solid var(--glass-border);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(20px) scale(0.95);
+            transition: var(--transition-smooth);
+            z-index: 1000;
+            overflow: hidden;
+        }
+        .nav-item:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0) scale(1);
+        }
+        .dropdown-menu li {
+            list-style: none;
+        }
+        .dropdown-menu a {
+            color: var(--pure-white);
+            padding: 1rem 1.5rem;
+            display: block;
+            text-decoration: none;
+            transition: var(--transition-smooth);
+            border-radius: 0;
+        }
+        .dropdown-menu a:hover {
+            background: var(--primary-gradient);
+            transform: translateX(10px);
+        }
+        .contact-btn {
+            background: var(--primary-gradient);
+            color: var(--pure-white);
+            padding: 0.8rem 2rem;
+            border: none;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition-bounce);
+            box-shadow: var(--shadow-soft);
+            position: relative;
+            overflow: hidden;
+        }
+        .contact-btn::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: var(--transition-smooth);
+        }
+        .contact-btn:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+        .contact-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-strong);
+        }
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--pure-white);
+            font-size: 1.8rem;
+            cursor: pointer;
+            transition: var(--transition-bounce);
+        }
+        .mobile-menu-btn:hover {
+            transform: scale(1.1);
+            color: var(--neon-blue);
+        }
+        .hero {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.9) 0%, rgba(118, 75, 162, 0.9) 100%),
+                url('https://images.unsplash.com/photo-1622299429806-76dbd3cf7848?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            min-height: 70vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 30% 70%, rgba(102, 126, 234, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 70% 30%, rgba(118, 75, 162, 0.3) 0%, transparent 50%);
+            z-index: 1;
+        }
+        .hero-content {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+            color: var(--pure-white);
+        }
+        .hero h1 {
+            font-family: 'Poppins', sans-serif;
+            font-size: clamp(3rem, 8vw, 4.5rem);
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            animation: fadeInUp 1.2s ease;
+            text-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            line-height: 1.1;
+        }
+        .hero p {
+            font-size: clamp(1.2rem, 3vw, 1.6rem);
+            margin-bottom: 3rem;
+            opacity: 0.95;
+            animation: fadeInUp 1.2s ease 0.3s both;
+            text-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .cta-button {
+            background: var(--success-gradient);
+            color: var(--pure-white);
+            padding: 1.2rem 3rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.3rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: var(--transition-bounce);
+            text-decoration: none;
+            display: inline-block;
+            position: relative;
+            overflow: hidden;
+            animation: fadeInUp 1.2s ease 0.6s both;
+            box-shadow: 0 15px 35px rgba(79, 172, 254, 0.3);
+        }
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: var(--transition-smooth);
+        }
+        .cta-button:hover::before {
+            width: 400px;
+            height: 400px;
+        }
+        .cta-button:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 25px 50px rgba(79, 172, 254, 0.4);
+        }
+        .floating-icons {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1;
+            overflow: hidden;
+        }
+        .floating-icon {
+            position: absolute;
+            opacity: 0.1;
+            animation: float 20s infinite linear;
+            font-size: 4rem;
+            color: var(--pure-white);
+        }
+        .floating-icon:nth-child(1) {
+            top: 20%;
+            left: 10%;
+            animation-duration: 25s;
+        }
+        .floating-icon:nth-child(2) {
+            top: 60%;
+            left: 85%;
+            font-size: 3rem;
+            animation-duration: 30s;
+            animation-delay: 3s;
+        }
+        .floating-icon:nth-child(3) {
+            top: 30%;
+            left: 75%;
+            font-size: 5rem;
+            animation-duration: 22s;
+            animation-delay: 8s;
+        }
+        .floating-icon:nth-child(4) {
+            top: 75%;
+            left: 15%;
+            font-size: 3.5rem;
+            animation-duration: 28s;
+            animation-delay: 2s;
+        }
+        @keyframes float {
+            0% {
+                transform: translateY(0) rotate(0deg) scale(1);
+            }
+            25% {
+                transform: translateY(-30px) rotate(90deg) scale(1.1);
+            }
+            50% {
+                transform: translateY(-60px) rotate(180deg) scale(0.9);
+            }
+            75% {
+                transform: translateY(-30px) rotate(270deg) scale(1.05);
+            }
+            100% {
+                transform: translateY(0) rotate(360deg) scale(1);
+            }
+        }
+        .products-section {
+            padding: 4rem 2rem;
+            background: var(--pure-white);
+            position: relative;
+        }
+        .section-title {
+            text-align: center;
+            font-family: 'Poppins', sans-serif;
+            font-size: clamp(2.5rem, 6vw, 3.5rem);
+            font-weight: 800;
+            color: var(--text-primary);
+            margin-bottom: 3rem;
+            position: relative;
+            animation: fadeIn 1.2s ease;
+        }
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 120px;
+            height: 6px;
+            background: var(--primary-gradient);
+            border-radius: 3px;
+            animation: grow 1.5s ease;
+        }
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2.5rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        .product-card {
+            background: var(--pure-white);
+            border-radius: 25px;
+            overflow: hidden;
+            box-shadow: var(--shadow-soft);
+            position: relative;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .product-badge {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: var(--secondary-gradient);
+            color: var(--pure-white);
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: 700;
+            z-index: 3;
+            box-shadow: var(--shadow-soft);
+        }
+        .product-image {
+            width: 100%;
+            height: 350px;
+            background: linear-gradient(135deg, var(--soft-gray) 0%, #e9ecef 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+        .image-nav {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            transform: translateY(-50%);
+            z-index: 4;
+        }
+        .image-nav-btn {
+            background: rgba(255, 255, 255, 0.8);
+            border: none;
+            color: var(--text-primary);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 1.2rem;
+            transition: var(--transition-smooth);
+            margin: 0 10px;
+            box-shadow: var(--shadow-soft);
+        }
+        .image-nav-btn:hover {
+            background: var(--primary-gradient);
+            color: var(--pure-white);
+            transform: scale(1.1);
+        }
+        .image-nav-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+        .product-info {
+            padding: 2rem;
+            position: relative;
+            z-index: 2;
+        }
+        .product-name {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 0.8rem;
+        }
+        .product-brand {
+            font-size: 1.1rem;
+            color: var(--electric-blue);
+            margin-bottom: 0.8rem;
+            font-weight: 600;
+        }
+        .product-price {
+            font-size: 1.8rem;
+            color: var(--electric-blue);
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+        }
+        .product-actions {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+        .call-now-btn {
+            flex: 1;
+            background: var(--primary-gradient);
+            color: var(--pure-white);
+            border: none;
+            padding: 1rem;
+            border-radius: 15px;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: var(--transition-bounce);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            text-decoration: none;
+            box-shadow: var(--shadow-soft);
+        }
+        .call-now-btn::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: var(--transition-smooth);
+        }
+        .call-now-btn:hover::before {
+            width: 400px;
+            height: 400px;
+        }
+        .call-now-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-strong);
+        }
+        .wishlist-btn {
+            background: rgba(102, 126, 234, 0.1);
+            color: var(--electric-blue);
+            border: 2px solid var(--electric-blue);
+            width: 55px;
+            height: 55px;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: var(--transition-bounce);
+            font-size: 1.2rem;
+        }
+        .wishlist-btn:hover {
+            background: var(--accent-coral);
+            color: var(--pure-white);
+            border-color: var(--accent-coral);
+            transform: scale(1.1);
+        }
+        .details-btn {
+            flex: 1;
+            background: var(--success-gradient);
+            color: var(--pure-white);
+            border: none;
+            padding: 1rem;
+            border-radius: 15px;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: var(--transition-bounce);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            text-decoration: none;
+            box-shadow: var(--shadow-soft);
+        }
+        .details-btn::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: var(--transition-smooth);
+        }
+        .details-btn:hover::before {
+            width: 400px;
+            height: 400px;
+        }
+        .details-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-strong);
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(26, 29, 41, 0.8);
+            backdrop-filter: blur(10px);
+            z-index: 10000;
+            overflow-y: auto;
+            animation: fadeIn 0.5s ease;
+        }
+        .modal-content {
+            background: var(--pure-white);
+            max-width: 1000px;
+            margin: 50px auto;
+            border-radius: 25px;
+            overflow: hidden;
+            position: relative;
+            animation: slideInUp 0.6s ease;
+            box-shadow: var(--shadow-strong);
+        }
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            color: var(--text-primary);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 3;
+            font-size: 1.5rem;
+            box-shadow: var(--shadow-soft);
+            transition: var(--transition-bounce);
+        }
+        .modal-close:hover {
+            background: var(--accent-coral);
+            color: var(--pure-white);
+            transform: scale(1.1) rotate(90deg);
+        }
+        .modal-body {
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .modal-image-container {
+            flex: 1;
+            min-width: 400px;
+            position: relative;
+        }
+        .modal-main-image {
+            width: 100%;
+            height: 500px;
+            background: var(--soft-gray);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .modal-main-image img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            transition: var(--transition-smooth);
+        }
+        .modal-info {
+            flex: 1;
+            min-width: 400px;
+            padding: 3rem;
+        }
+        .modal-title {
+            font-size: 2.2rem;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+            font-weight: 800;
+        }
+        .modal-brand {
+            font-size: 1.4rem;
+            color: var(--electric-blue);
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+        }
+        .modal-price {
+            font-size: 2.5rem;
+            color: var(--electric-blue);
+            font-weight: 800;
+            margin-bottom: 2rem;
+        }
+        .modal-description {
+            margin-bottom: 2rem;
+            line-height: 1.8;
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+        }
+        .modal-features {
+            margin-bottom: 2rem;
+        }
+        .modal-features h4 {
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+            font-weight: 700;
+        }
+        .modal-features ul {
+            list-style-type: none;
+        }
+        .modal-features li {
+            margin-bottom: 0.8rem;
+            padding-left: 2rem;
+            position: relative;
+            color: var(--text-secondary);
+        }
+        .modal-features li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--accent-mint);
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+        .modal-actions {
+            display: flex;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        .footer {
+            background: linear-gradient(135deg, var(--dark-navy) 0%, #2d3748 100%);
+            color: var(--pure-white);
+            padding: 3rem 2rem 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+        .footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 20% 80%, rgba(102, 126, 234, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(118, 75, 162, 0.1) 0%, transparent 50%);
+            z-index: 1;
+        }
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            margin-bottom: 2rem;
+            position: relative;
+            z-index: 2;
+        }
+        .footer-section h3 {
+            color: var(--neon-blue);
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+            font-weight: 700;
+            position: relative;
+            display: inline-block;
+        }
+        .footer-section h3::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: var(--primary-gradient);
+            border-radius: 2px;
+        }
+        .footer-section a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            display: block;
+            margin-bottom: 1rem;
+            transition: var(--transition-smooth);
+            padding: 0.5rem 0;
+        }
+        .footer-section a:hover {
+            color: var(--neon-blue);
+            transform: translateX(10px);
+        }
+        .social-icons {
+            display: flex;
+            justify-content: flex-start;
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+        .social-icons a {
+            color: var(--pure-white);
+            font-size: 2rem;
+            transition: var(--transition-bounce);
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--glass-border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 0;
+        }
+        .social-icons a:hover {
+            background: var(--primary-gradient);
+            transform: translateY(-5px) scale(1.1);
+            box-shadow: var(--shadow-medium);
+        }
+        .newsletter {
+            margin-top: 2rem;
+        }
+        .newsletter-form {
+            display: flex;
+            max-width: 400px;
+            margin-top: 1rem;
+        }
+        .newsletter-input {
+            flex: 1;
+            padding: 1rem;
+            border: none;
+            border-radius: 50px 0 0 50px;
+            outline: none;
+            font-size: 1rem;
+        }
+        .newsletter-btn {
+            background: var(--primary-gradient);
+            color: var(--pure-white);
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 0 50px 50px 0;
+            font-weight: 700;
+            cursor: pointer;
+            transition: var(--transition-bounce);
+        }
+        .newsletter-btn:hover {
+            transform: scale(1.05);
+            box-shadow: var(--shadow-medium);
+        }
+        .location-section {
+            margin-top: 1rem;
+            text-align: left;
+        }
+        .location-info {
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+        }
+        .location-info i {
+            color: var(--neon-blue);
+            margin-top: 0.5rem;
+            font-size: 1.2rem;
+        }
+        .map-container {
+            margin-top: 2rem;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow-medium);
+            height: 250px;
+        }
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        .directions-btn {
+            display: inline-block;
+            margin-top: 1.5rem;
+            background: var(--success-gradient);
+            color: var(--pure-white);
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition-bounce);
+            box-shadow: var(--shadow-soft);
+        }
+        .directions-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-medium);
+        }
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: var(--primary-gradient);
+            color: var(--pure-white);
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition-bounce);
+            z-index: 999;
+            box-shadow: var(--shadow-medium);
+            border: 1px solid var(--glass-border);
+            backdrop-filter: blur(10px);
+        }
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+        .back-to-top:hover {
+            transform: translateY(-5px) scale(1.1);
+            box-shadow: var(--shadow-strong);
+        }
+        @keyframes slideInDown {
+            from {
+                transform: translateY(-100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+        @keyframes slideInUp {
+            from {
+                transform: translateY(100px) scale(0.9);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0) scale(1);
+                opacity: 1;
+            }
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(60px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        @keyframes grow {
+            from {
+                width: 0;
+            }
+            to {
+                width: 120px;
+            }
+        }
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: rgba(26, 29, 41, 0.95);
+                backdrop-filter: blur(20px);
+                flex-direction: column;
+                padding: 2rem;
+                gap: 1rem;
+                border-radius: 0 0 20px 20px;
+            }
+            .mobile-menu-btn {
+                display: block;
+            }
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            .nav-container {
+                padding: 0 1rem;
+            }
+            .section-title {
+                font-size: 2.5rem;
+            }
+            .products-grid {
+                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+                gap: 2rem;
+            }
+            .product-image {
+                height: 250px;
+            }
+            .modal-body {
+                flex-direction: column;
+            }
+            .modal-image-container,
+            .modal-info {
+                min-width: auto;
+            }
+            .modal-main-image {
+                height: 300px;
+            }
+        }
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+            .newsletter-form {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            .newsletter-input,
+            .newsletter-btn {
+                width: 100%;
+                border-radius: 25px;
+            }
+            .product-actions {
+                flex-direction: column;
+            }
+            .modal-actions {
+                flex-direction: column;
+            }
+            .location-info {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+            .modal-info {
+                padding: 2rem 1.5rem;
+            }
+        }
+        @media print {
+            .header {
+                position: static;
+                box-shadow: none;
+            }
+            .hero {
+                background-attachment: scroll;
+                page-break-inside: avoid;
+            }
+            .product-card {
+                page-break-inside: avoid;
+                margin-bottom: 1rem;
+            }
+            .back-to-top,
+            .floating-icons,
+            .modal,
+            .image-nav {
+                display: none;
+            }
+            .loader-container {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="loader-container" id="loader">
+        <div class="loader"></div>
+    </div>
+     <header class="header">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <i class="fas fa-bolt"></i>
+                ElectroWorld
+            </a>
+            <nav>
+                <ul class="nav-menu" id="navMenu">
+                    <li><a href="index.html">Home</a></li>
+                    <li class="nav-item">
+                        <a href="#">Products</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="ACs.html">Air Conditioners</a></li>
+                            <li><a href="fridge.html">Refrigerators</a></li>
+                            <li><a href="washing.html">Washing Machines</a></li>
+                            <li><a href="tvs.html">Smart TVs</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="faq.html">FAQ</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="Contact.html">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="contact-info">
+                <a href="tel:+923002263673" class="contact-btn">
+                    <i class="fas fa-phone"></i> Call Us
+                </a>
+            </div>
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </header>
+
+    <section class="hero" id="home">
+        <div class="floating-icons">
+            <i class="fas fa-tshirt floating-icon"></i>
+            <i class="fas fa-water floating-icon"></i>
+            <i class="fas fa-sync floating-icon"></i>
+            <i class="fas fa-home floating-icon"></i>
+        </div>
+        <div class="hero-content">
+            <h1>Premium Washing Machines</h1>
+            <p>Experience the perfect blend of efficiency and durability with our comprehensive collection of advanced washing machines from leading brands. Designed for modern homes with superior cleaning technology.</p>
+            <a href="#products" class="cta-button">
+                <i class="fas fa-tshirt"></i>
+                Shop Washing Machines
+            </a>
+        </div>
+    </section>
+    <section class="products-section" id="products">
+        <h2 class="section-title">Premium Washing Machine Collection</h2>
+        <div class="products-container">
+            <div class="products-grid" id="productsGrid">
+            </div>
+        </div>
+    </section>
+    <footer class="footer" id="contact">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Quick Navigation</h3>
+                <a href="index.html"><i class="fas fa-home"></i> Home</a>
+                <a href="Contact.html"><i class="fas fa-envelope"></i> Contact Us</a>
+                <a href="#products"><i class="fas fa-tshirt"></i> Washing Machines</a>
+            </div>
+            <div class="footer-section">
+                <h3>Product Categories</h3>
+                <a href="ACs.html"><i class="fas fa-snowflake"></i> Air Conditioners</a>
+                <a href="washing.html"><i class="fas fa-tshirt"></i> Washing Machines</a>
+                <a href="fridge.html"><i class="fas fa-thermometer-empty"></i> Refrigerators</a>
+                <a href="tvs.html"><i class="fas fa-tv"></i> Smart TVs</a>
+            </div>
+            <div class="footer-section">
+                <h3>Connect With Us</h3>
+                <div class="social-icons">
+                    <a href="https://www.facebook.com/share/1Y3e97MhgV/"><i class="fab fa-facebook-f"></i></a>
+                    <a href="tel:+923002263673"><i class="fas fa-phone"></i></a>
+                    <a href="https://wa.me/923002263673"><i class="fab fa-whatsapp"></i></a>
+                </div>
+                <div class="newsletter">
+                    <h3>Newsletter Subscription</h3>
+                    <form class="newsletter-form">
+                        <input type="email" class="newsletter-input" placeholder="Enter your email address">
+                        <button type="submit" class="newsletter-btn">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+            <div class="footer-section location-section">
+                <h3>Visit Our Store</h3>
+                <div class="location-info">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <div>
+                        <p><strong>ElectroWorld</strong></p>
+                        <p>Shop #5, Main Market, Gulshan-e-Iqbal, Karachi</p>
+                    </div>
+                </div>
+                <div class="location-info">
+                    <i class="fas fa-clock"></i>
+                    <div>
+                        <p>Monday - Saturday: 10:00 AM - 9:00 PM</p>
+                        <p>Sunday: 12:00 PM - 8:00 PM</p>
+                    </div>
+                </div>
+                <div class="map-container">
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3619.845722917621!2d67.06541631498155!3d24.927065284035775!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3eb33f90f5c6b43f%3A0x7d5b8b5b5b5b5b5b!2sElectroWorld!5e0!3m2!1sen!2s!4v1620000000000!5m2!1sen!2s"
+                        allowfullscreen="" loading="lazy"></iframe>
+                </div>
+                <a href="https://maps.app.goo.gl/uSRmXD8doQhe2oYG7" target="_blank" class="directions-btn">
+                    <i class="fas fa-directions"></i> Get Directions
+                </a>
+            </div>
+        </div>
+        <div style="border-top: 1px solid rgba(255, 255, 255, 0.1); padding-top: 2rem; margin-top: 3rem; text-align: center;">
+            <p>&copy; 2025 A for ElectroWorld. All rights reserved.</p>
+        </div>
+    </footer>
+    <div class="back-to-top" id="backToTop">
+        <i class="fas fa-chevron-up"></i>
+    </div>
+    <div class="modal" id="productModal">
+        <div class="modal-content">
+            <div class="modal-close" id="modalClose">
+                <i class="fas fa-times"></i>
+            </div>
+            <div class="modal-body">
+                <div class="modal-image-container">
+                    <div class="modal-main-image">
+                        <img id="modalMainImage" src="" alt="">
+                        <div class="image-nav" id="modalImageNav">
+                            <button class="image-nav-btn prev-btn" id="modalPrevBtn" onclick="changeModalImage(-1)">
+                                <i class="fas fa-chevron-left"></i>
+                            </button>
+                            <button class="image-nav-btn next-btn" id="modalNextBtn" onclick="changeModalImage(1)">
+                                <i class="fas fa-chevron-right"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-info">
+                    <h2 class="modal-title" id="modalTitle"></h2>
+                    <h3 class="modal-brand" id="modalBrand"></h3>
+                    <div class="modal-price" id="modalPrice"></div>
+                    <p class="modal-description" id="modalDescription"></p>
+                    <div class="modal-features">
+                        <h4>Key Features</h4>
+                        <ul id="modalFeatures"></ul>
+                    </div>
+                    <div class="modal-actions">
+                        <a href="tel:+923002263673" class="call-now-btn">
+                            <i class="fas fa-phone"></i> Call Now
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        const washingMachineProducts = [
+            {
+                id: 1,
+                name: "DWF 8201 S Inverter",
+                brand: "Dawlance",
+                price: "Rs 176,801.00",
+                category: "Washing Machine",
+                images: [
+                    "Assets/Images/Dawlance/Dawlance Washing Machine/DWF 8201 S Inverter.webp",
+                ],
+                description: "With Hygiene Wash, you can now wash your clothes at up to 90 degrees to ensure perfect hygiene for your family. Enjoy the convenience of powerful performance and energy savings with the Inverter Motor. With the help of special Aquawave Drum Technology, your clothes get the right treatment to remove 24 types of tough stains.",
+                features: [
+                    "Connectivity: Bluetooth Connectivity",
+                    "Child Lock: Yes",
+                    "Automatic Water Adjustment System: Yes",
+                    "Time Delay: 0-24h",
+                    "Temperature Selection: Yes"
+                ]
+            },
+            {
+                id: 2,
+                name: "DS 6000 CLEAR LID",
+                brand: "Dawlance",
+                price: "Rs 23,600.00",
+                category: "Washing Machine",
+                images: [
+                    "Assets/Images/Dawlance/Dawlance Washing Machine/DS 6000 CLEAR LID.webp",
+                    "Assets/Images/Dawlance/Dawlance Washing Machine/DS 6000 CLEAR LID italic.webp",
+                    "Assets/Images/Dawlance/Dawlance Washing Machine/DS 6000 CLEAR LID top.webp",
+                    "Assets/Images/Dawlance/Dawlance Washing Machine/DS 6000 CLEAR LID back.webp"
+                ],
+                description: "Shower Rinse: This technology ensures better detergent removal and cleaner clothes by thoroughly penetrating the fabric with water, enhancing the overall washing experience.",
+                features: [
+                    "Spin Time Adjustment: Yes",
+                    "Lid Color & Material: Black Transparent",
+                    "Color: White"
+                ]
+            },
+            {
+                id: 3,
+                name: "DW 6550 Twin Tub",
+                brand: "Dawlance",
+                price: "Rs 38,500.00",
+                category: "Washing Machine",
+                images: [
+                    "Assets/Images/Dawlance/Dawlance Washing Machine/DW 6550 Twin Tub.webp",
+                    "Assets/Images/Dawlance/Dawlance Washing Machine/DW 6550 Twin Tub front.webp",
+                    "Assets/Images/Dawlance/Dawlance Washing Machine/DW 6550 Twin Tub top.webp",
+                    "Assets/Images/Dawlance/Dawlance Washing Machine/DW 6550 Twin Tub back.webp"
+                ],
+                description: "A robust and wide pulsator with strong rotation which leads to superior washing of heavy loads. A wide and ergonomic opening to help users add and remove laundry easily.",
+                features: [
+                    "Deep Waterfall: Yes",
+                    "Shower Rinse: Yes"
+                ]
+            },
+            {
+                id: 4,
+                name: "DW 6550 Clear Lid",
+                brand: "Dawlance",
+                price: "Rs 40,000.00",
+                category: "Washing Machine",
+                images: [
+                    "Assets/Images/Dawlance/Dawlance Washing Machine/DW 6550 Clear Lid.webp",
+                    "Assets/Images/Dawlance/Dawlance Washing Machine/DW 6550 Clear Lid top.webp",
+                    "Assets/Images/Dawlance/Dawlance Washing Machine/DW 6550 Clear Lid back.webp"
+                ],
+                description: "A robust and wide pulsator with strong rotation which leads to superior washing of heavy loads. A wide and ergonomic opening to help users add and remove laundry easily.",
+                features: [
+                    "Deep Waterfall: Yes",
+                    "Shower Rinse: Yes"
+                ]
+            },
+            {
+                id: 5,
+                name: "Ultron 1450",
+                brand: "Orient",
+                price: "Rs 131,000.00",
+                category: "Washing Machine",
+                images: [
+                    "Assets/Images/orient/orient washing machine/Ultron 1450.webp",
+                ],
+                description: "Orient Ultron Series washing machine is enabled with American Zilog Technology is loaded with useful features and heavy-duty specifications. This fully automatic washing machine offers a one-touch operation for super wash.",
+                features: [
+                    "DDM Inverter",
+                    "American ZILOG Technology",
+                    "Multi Waterfall Technology",
+                    "Up to 50% detergent saving"
+                ]
+            },
+            {
+                id: 6,
+                name: "Ultron 1250",
+                brand: "Orient",
+                price: "Rs 125,000.00",
+                category: "Washing Machine",
+                images: [
+                    "Assets/Images/orient/orient washing machine/Ultron 1250.webp",
+                ],
+                description: "Orient Ultron Series washing machine is loaded with useful features and heavy-duty specifications. This fully automatic washing machine offers a one-touch operation for super wash.",
+                features: [
+                    "AI logic",
+                    "DDM Inverter",
+                    "American ZILOG Technology",
+                    "Multi Waterfall Technology",
+                    "Up to 50% detergent saving"
+                ]
+            },
+            {
+                id: 7,
+                name: "Twister 1150",
+                brand: "Orient",
+                price: "Rs 66,000.00",
+                category: "Washing Machine",
+                images: [
+                    "Assets/Images/orient/orient washing machine/Twister 1150 front.webp",
+                    "Assets/Images/orient/orient washing machine/Twister 1150.webp",
+                    "Assets/Images/orient/orient washing machine/Twister 1150  italic.webp"
+                ],
+                description: "Orient Twister Series washing machine is loaded with useful features and heavy-duty specifications. This fully automatic washing machine offers a one-touch operation for super wash.",
+                features: [
+                    "One Touch Operation",
+                    "Water-Jet Pulsator",
+                    "Oval Bulge Drum Technology",
+                    "Smart Lint Filters",
+                    "2 in 1 detergent box"
+                ]
+            }
+        ];
+        let currentFilter = 'all';
+        let currentModalProductId = null;
+        let currentModalImageIndex = 0;
+
+        window.addEventListener('load', function () {
+            setTimeout(() => {
+                const loader = document.getElementById('loader');
+                loader.style.opacity = '0';
+                setTimeout(() => {
+                    loader.style.display = 'none';
+                }, 800);
+            }, 1500);
+            loadProducts();
+            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+            const navMenu = document.getElementById('navMenu');
+            mobileMenuBtn.addEventListener('click', function () {
+                navMenu.classList.toggle('active');
+                const icon = mobileMenuBtn.querySelector('i');
+                if (navMenu.classList.contains('active')) {
+                    icon.classList.remove('fa-bars');
+                    icon.classList.add('fa-times');
+                } else {
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-bars');
+                }
+            });
+            document.querySelectorAll('.nav-menu a').forEach(link => {
+                link.addEventListener('click', () => {
+                    navMenu.classList.remove('active');
+                    const icon = mobileMenuBtn.querySelector('i');
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-bars');
+                });
+            });
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+            const observer = new IntersectionObserver(function (entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('fade-in');
+                    }
+                });
+            }, observerOptions);
+            document.querySelectorAll('.hero, .products-section, .footer').forEach(section => {
+                observer.observe(section);
+            });
+            const backToTopBtn = document.getElementById('backToTop');
+            window.addEventListener('scroll', () => {
+                if (window.pageYOffset > 400) {
+                    backToTopBtn.classList.add('visible');
+                } else {
+                    backToTopBtn.classList.remove('visible');
+                }
+            });
+            backToTopBtn.addEventListener('click', () => {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+            const newsletterForm = document.querySelector('.newsletter-form');
+            newsletterForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const emailInput = newsletterForm.querySelector('.newsletter-input');
+                if (emailInput.value) {
+                    const btn = newsletterForm.querySelector('.newsletter-btn');
+                    btn.textContent = 'Subscribed!';
+                    btn.style.background = 'var(--success-gradient)';
+                    setTimeout(() => {
+                        btn.textContent = 'Subscribe';
+                        btn.style.background = 'var(--primary-gradient)';
+                        emailInput.value = '';
+                    }, 2000);
+                }
+            });
+            const modal = document.getElementById('productModal');
+            const modalClose = document.getElementById('modalClose');
+            modalClose.addEventListener('click', () => {
+                modal.style.display = 'none';
+            });
+            window.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    modal.style.display = 'none';
+                }
+            });
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && modal.style.display === 'block') {
+                    modal.style.display = 'none';
+                }
+            });
+        });
+        function loadProducts(filter = 'all') {
+            const productsGrid = document.getElementById('productsGrid');
+            const filteredProducts = filter === 'all'
+                ? washingMachineProducts
+                : washingMachineProducts.filter(product => product.brand === filter);
+            productsGrid.innerHTML = filteredProducts.map((product, index) => `
+                <div class="product-card" data-category="${product.category}" data-product-id="${product.id}">
+                    ${product.badge ? `<div class="product-badge">${product.badge}</div>` : ''}
+                    <div class="product-image">
+                        <img src="${product.images[0]}" alt="${product.name}" class="product-img" onerror="this.onerror=null; this.src='https://picsum.photos/seed/washing-${product.id}/400/300.jpg';">
+                        <div class="image-nav" style="display: ${product.images.length > 1 ? 'flex' : 'none'};">
+                            <button class="image-nav-btn prev-btn" onclick="changeImage(${product.id}, -1)" ${product.images.length <= 1 ? 'disabled' : ''}>
+                                <i class="fas fa-chevron-left"></i>
+                            </button>
+                            <button class="image-nav-btn next-btn" onclick="changeImage(${product.id}, 1)" ${product.images.length <= 1 ? 'disabled' : ''}>
+                                <i class="fas fa-chevron-right"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">${product.name}</h3>
+                        <h4 class="product-brand">${product.brand}</h4>
+                        <p class="product-price">${product.price}</p>
+                        <div class="product-actions">
+                            <a href="tel:+923002263673" class="call-now-btn">
+                                <i class="fas fa-phone"></i> Call Now
+                            </a>
+                            <button class="wishlist-btn">
+                                <i class="far fa-heart"></i>
+                            </button>
+                        </div>
+                        <div class="product-actions">
+                            <button class="details-btn" onclick="showProductDetails(${product.id})">
+                                <i class="fas fa-info-circle"></i> View Details
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+            document.querySelectorAll('.wishlist-btn').forEach(btn => {
+                btn.addEventListener('click', function () {
+                    const icon = this.querySelector('i');
+                    if (icon.classList.contains('far')) {
+                        icon.classList.remove('far');
+                        icon.classList.add('fas');
+                        this.style.background = 'var(--accent-coral)';
+                        this.style.color = 'var(--pure-white)';
+                        this.style.borderColor = 'var(--accent-coral)';
+                    } else {
+                        icon.classList.remove('fas');
+                        icon.classList.add('far');
+                        this.style.background = '';
+                        this.style.color = '';
+                        this.style.borderColor = '';
+                    }
+                });
+            });
+        }
+        function showProductDetails(productId) {
+            const product = washingMachineProducts.find(p => p.id === productId);
+            if (!product) return;
+            const modal = document.getElementById('productModal');
+            const modalMainImage = document.getElementById('modalMainImage');
+            const modalTitle = document.getElementById('modalTitle');
+            const modalBrand = document.getElementById('modalBrand');
+            const modalPrice = document.getElementById('modalPrice');
+            const modalDescription = document.getElementById('modalDescription');
+            const modalFeatures = document.getElementById('modalFeatures');
+            const modalImageNav = document.getElementById('modalImageNav');
+            const modalPrevBtn = document.getElementById('modalPrevBtn');
+            const modalNextBtn = document.getElementById('modalNextBtn');
+
+            currentModalProductId = productId;
+            currentModalImageIndex = 0;
+
+            modalMainImage.src = product.images[0];
+            modalMainImage.onerror = function () {
+                this.onerror = null;
+                this.src = `https://picsum.photos/seed/washing-${product.id}/600/400.jpg`;
+            };
+            modalTitle.textContent = product.name;
+            modalBrand.textContent = product.brand;
+            modalPrice.textContent = product.price;
+            modalDescription.textContent = product.description;
+            modalFeatures.innerHTML = product.features.map(feature => `<li>${feature}</li>`).join('');
+            
+            modalImageNav.style.display = product.images.length > 1 ? 'flex' : 'none';
+            modalPrevBtn.disabled = true;
+            modalNextBtn.disabled = product.images.length <= 1;
+
+            modal.style.display = 'block';
+        }
+        function changeImage(productId, direction) {
+            const product = washingMachineProducts.find(p => p.id === productId);
+            if (!product) return;
+            const card = document.querySelector(`.product-card[data-product-id="${productId}"]`);
+            const img = card.querySelector('.product-img');
+            let currentIndex = parseInt(card.dataset.imageIndex || 0);
+            currentIndex = (currentIndex + direction + product.images.length) % product.images.length;
+            card.dataset.imageIndex = currentIndex;
+            img.src = product.images[currentIndex];
+            img.onerror = function () {
+                this.onerror = null;
+                this.src = `https://picsum.photos/seed/washing-${productId}/400/300.jpg`;
+            };
+            const prevBtn = card.querySelector('.prev-btn');
+            const nextBtn = card.querySelector('.next-btn');
+            prevBtn.disabled = currentIndex === 0;
+            nextBtn.disabled = currentIndex === product.images.length - 1;
+        }
+        function changeModalImage(direction) {
+            const product = washingMachineProducts.find(p => p.id === currentModalProductId);
+            if (!product) return;
+            const modalMainImage = document.getElementById('modalMainImage');
+            const modalPrevBtn = document.getElementById('modalPrevBtn');
+            const modalNextBtn = document.getElementById('modalNextBtn');
+
+            currentModalImageIndex = (currentModalImageIndex + direction + product.images.length) % product.images.length;
+            modalMainImage.src = product.images[currentModalImageIndex];
+            modalMainImage.onerror = function () {
+                this.onerror = null;
+                this.src = `https://picsum.photos/seed/washing-${currentModalProductId}/600/400.jpg`;
+            };
+
+            modalPrevBtn.disabled = currentModalImageIndex === 0;
+            modalNextBtn.disabled = currentModalImageIndex === product.images.length - 1;
+        }
+        document.addEventListener('click', function (e) {
+            if (e.target.classList.contains('call-now-btn') || e.target.closest('.call-now-btn')) {
+                const button = e.target.classList.contains('call-now-btn') ? e.target : e.target.closest('.call-now-btn');
+                button.style.transform = 'scale(0.95)';
+                setTimeout(() => {
+                    button.style.transform = '';
+                }, 200);
+            }
+            if (e.target.classList.contains('details-btn') || e.target.closest('.details-btn')) {
+                const button = e.target.classList.contains('details-btn') ? e.target : e.target.closest('.details-btn');
+                button.style.transform = 'scale(0.95)';
+                setTimeout(() => {
+                    button.style.transform = '';
+                }, 200);
+            }
+        });
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const parallax = document.querySelector('.hero');
+            const speed = scrolled * 0.5;
+            parallax.style.transform = `translateY(${speed}px)`;
+        });
+    </script>
+</body>
+</html>
