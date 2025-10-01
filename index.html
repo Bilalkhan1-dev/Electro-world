@@ -1323,7 +1323,55 @@
                 padding: 2rem 1.5rem;
             }
         }
+        /* Existing CSS remains same, add these modifications */
 
+@media (max-width: 768px) {
+    .nav-menu {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: rgba(26, 29, 41, 0.95);
+        backdrop-filter: blur(20px);
+        flex-direction: column;
+        padding: 2rem;
+        gap: 1rem;
+        border-radius: 0 0 20px 20px;
+    }
+
+    .nav-menu.active {
+        display: flex;
+    }
+
+    .nav-container {
+        flex-direction: column;
+        padding: 1rem;
+        align-items: flex-start;
+    }
+
+    .contact-info {
+        display: none;
+        width: 100%;
+        margin-top: 1rem;
+    }
+
+    .nav-menu.active + .contact-info {
+        display: block;
+    }
+
+    .contact-btn {
+        padding: 0.8rem 1.5rem;
+        font-size: 1rem;
+        width: 100%;
+        text-align: center;
+    }
+
+    .mobile-menu-btn {
+        display: block;
+        margin-left: auto;
+    }
+}
         /* Print Optimization */
         @media print {
             .header {
@@ -1352,38 +1400,38 @@
 
     <!-- Enhanced Header -->
      <header class="header">
-        <div class="nav-container">
-            <a href="index.html" class="logo">
-                <i class="fas fa-bolt"></i>
-                ElectroWorld
+    <div class="nav-container">
+        <a href="index.html" class="logo">
+            <i class="fas fa-bolt"></i>
+            ElectroWorld
+        </a>
+        <nav>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html">Home</a></li>
+                <li class="nav-item">
+                    <a href="#">Products</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="ACs.html">Air Conditioners</a></li>
+                        <li><a href="fridge.html">Refrigerators</a></li>
+                        <li><a href="washing.html">Washing Machines</a></li>
+                        <li><a href="tvs.html">Smart TVs</a></li>
+                    </ul>
+                </li>
+                <li><a href="faq.html">FAQ</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="Contact.html">Contact</a></li>
+            </ul>
+        </nav>
+        <div class="contact-info">
+            <a href="tel:+923002263673" class="contact-btn">
+                <i class="fas fa-phone"></i> Call Us
             </a>
-            <nav>
-                <ul class="nav-menu" id="navMenu">
-                    <li><a href="index.html">Home</a></li>
-                    <li class="nav-item">
-                        <a href="#">Products</a>
-                        <ul class="dropdown-menu">
-                            <li><a href="ACs.html">Air Conditioners</a></li>
-                            <li><a href="fridge.html">Refrigerators</a></li>
-                            <li><a href="washing.html">Washing Machines</a></li>
-                            <li><a href="tvs.html">Smart TVs</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="faq.html">FAQ</a></li>
-                    <li><a href="about.html">About Us</a></li>
-                    <li><a href="Contact.html">Contact</a></li>
-                </ul>
-            </nav>
-            <div class="contact-info">
-                <a href="tel:+923002263673" class="contact-btn">
-                    <i class="fas fa-phone"></i> Call Us
-                </a>
-            </div>
-            <button class="mobile-menu-btn" id="mobileMenuBtn">
-                <i class="fas fa-bars"></i>
-            </button>
         </div>
-    </header>
+        <button class="mobile-menu-btn" id="mobileMenuBtn">
+            <i class="fas fa-bars"></i>
+        </button>
+    </div>
+</header>
 
     <!-- Enhanced Hero Section -->
     <section class="hero" id="home">
@@ -1966,4 +2014,5 @@
         });
     </script>
 </body>
+
 </html>
